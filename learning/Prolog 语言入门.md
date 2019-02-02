@@ -8,6 +8,7 @@
 
 ### 二、Prolog运行环境SWI-Prolog的安装
 在官网下载相应操作系统的二进制安装包，然后安装，一定要将安装路径加入环境变量，一般在安装的时候会提示，勾选即可。
+
 在命令行键入swipl命令即可进入Prolog的shell
 ```
 C:\Users\Administrator>swipl
@@ -25,7 +26,9 @@ For built-in help, use ?- help(Topic). or ?- apropos(Word).
 halt.
 ```
 Prolog运行环境和源文件下每条语句是以.符号结束的，相当于Java中;符号的作用。
+
 Prolog标准输出函数为write().
+
 hello, world输出如下
 ```
 1 ?- write('hello, world').
