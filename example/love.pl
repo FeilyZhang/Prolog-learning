@@ -1,2 +1,6 @@
 love(zhangsan, lisi).
-stillLove(B, A) :- love(A,B).
+love(zhangsan,wangwu).
+male(zhangsan).
+male(wangwu).
+female(lisi).
+stillLove(B, A) :- love(A,B), \+female(B).
