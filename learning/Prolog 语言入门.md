@@ -27,12 +27,85 @@ halt.
 ```
 Prolog运行环境和源文件下每条语句是以.符号结束的，相当于Java中;符号的作用。
 
-Prolog标准输出函数为write().
-
-hello, world输出如下
+Prolog标准输出函数为write().hello, world输出如下
 ```
 1 ?- write('hello, world').
 hello, world
 true.
 ```
 其中true.为返回结果，代表加载成功！
+
+### 三、基本语法
+#### 3.1 常量和变量
+常量是以小写字母开头，变量则是以大写字母开头，示例如下
+```
+3 ?- write(name).
+name
+true.
+
+4 ?- write(Name).
+_4042
+true.
+```
+name是常量，那么会直接输出自身，Name是变量，那么输出的就是该变量的值。
+### 3.2 关系和属性
+关系肯定是两个事物时间的关系，方向从左到右，如下
+```
+friend(jack, peter).
+```
+意为jack的朋友是peter，即jack与peter是朋友关系，由于方向是从左到右，那么peter的朋友不一定是jack，如果我们想表达jack与peter互为朋友，那么如下表示
+```
+friend(jack, peter).
+friend(peter, jack).
+```
+属性是一个事物所具有的，比如jack是男的，男的就是peter的一个属性，如下表示
+```
+male(jack)
+```
+简言之，括号里面有两个参数，那么指的就是关系，有一个参数，那么指的就是属性。
+### 3.3 规则以及建立在属性、关系和规则上面程序的提问
+规则是推理的依据，即如何从一个论断得到另一个论断。
+
+我们定义一条规则：所有的恋爱关系是相互的，即男方是女方的恋人，那么女方一定是男方的恋人
+
+首先我们需要定义关系，其次再利用规则，我们暂时认为关系的定义必须是具体的，即只能用小写的常量，而规则的定义必须是笼统的，即规则用大写的变量
+
+```
+love(zhangsan, lisi).
+stillLove(B, A) :- love(A,B).
+```
+将上述代码保存在一个名为love.pl的文件中，然后用swipl-win.exe打开，显示如下
+```
+Welcome to SWI-Prolog (threaded, 64 bits, version 8.0.1)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit http://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+
+?-
+```
+然后我们可以根据规则来进行提问。
+我们在源文件中描述了具体的人物关系是张三爱过李四，我们想根据规则得出推论：如果A爱过B，那么B仍然爱过A。有三种提问方式，如下
+
+第一种，我们直接使用变量进行查询，含义为谁曾经还喜欢过谁，如下
+```
+?- stillLove(Who1, Who2).
+Who1 = lisi,
+Who2 = zhangsan.
+```
+我们设置了两个变量Who1和Who2，进行提问，结果显示Who1 = lisi, Who2 = zhangsan。这表示如果从zhangsan和lisi的关系出发，根据我们定义的规则，可以得出lisi曾经爱过zhangsan。
+
+第二种，左单变量进行查询，含义为lisi层级还喜欢过谁，如下
+```
+?- stillLove(lisi, Who).
+Who = zhangsan.
+```
+仍然可以得出张三曾经喜欢过李四
+
+第三种，右单变量查询，含义为zhangsan曾经被谁喜欢过，如下
+```
+?- stillLove(Who, zhangsan).
+Who = lisi.
+```
+仍然可以得出张三曾经喜欢过李四
