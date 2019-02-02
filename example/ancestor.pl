@@ -16,9 +16,10 @@ ancestor(X, Y) :-
 /*
 非递归代码
 */
-
+/*
 ancestor(X, Y) :-
     father(X, Y).
 
 ancestor(X, Y) :-
     father(X, Z), father(Z, Y).
+*/
