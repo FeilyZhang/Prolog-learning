@@ -4,8 +4,6 @@
 
 国内网上关于Prolog的资料和文档寥寥无几，在[阮一峰老师的博客](http://www.ruanyifeng.com/blog/2019/01/prolog.html?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)中倒是发现一篇文章足以入门Prolog，甚是开心，本文结合阮一峰老师的文章和原文出处[Solving murder with Prolog](https://xmonader.github.io/prolog/2018/12/21/solving-murder-prolog.html)，再加上本人实践，综合而成，感谢两位的无私奉献。
 
----
-
 ### 二、Prolog运行环境SWI-Prolog的安装
 在官网下载相应操作系统的二进制安装包，然后安装，一定要将安装路径加入环境变量，一般在安装的时候会提示，勾选即可。
 
@@ -143,3 +141,7 @@ stillLove(B, A) :- love(A,B), \+female(B).
 Who1 = wangwu,
 Who2 = zhangsan.
 ```
+
+四、总结
+*总体而言，Prolog的编程逻辑为：通过关系和属性进行事实描述 -> 添加推论的规则约束 -> shell提问得出结论*
+而shell中可以使用单变量/双变量进行查询追问。
