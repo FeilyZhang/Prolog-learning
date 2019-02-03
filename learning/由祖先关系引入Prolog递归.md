@@ -102,7 +102,62 @@ Who2 = john_boy_br ;
 false.
 ```
 
-可见，推理出了全部的可能，但是这种传递关系也是一种直接的传递关系,即首尾相连，还有一种传递关系，部分首尾不相连，代码如下
+可以看出，这种传递关系我们的推理不完备的，还缺一个结论，即
+
+```
+Who1 = zeb,
+Who2 = john_boy_br ;
+```
+
+这是因为我们的规则并没有体现出这样的关系，想要体现这样的关系，那么我们还需要并集一下另一个规则，如下
+
+
+```
+father(zeb, john_boy_sr).
+father(john_boy_sr, john_boy_jr).
+father(john_boy_jr, john_boy_br).
+
+ancestor(X, Y) :-
+    father(X, Y).
+
+ancestor(X, Y) :-
+    father(X, Z), father(Z, Y).
+	
+ancestor(X, Y) :-
+    father(X, Z), father(Z, B), father(B, Y).
+```
+
+这样，我们的推论就是完全的，为
+
+```
+?- ancestor(Who1, Who2).
+Who1 = zeb,
+Who2 = john_boy_sr ;
+Who1 = john_boy_sr,
+Who2 = john_boy_jr ;
+Who1 = john_boy_jr,
+Who2 = john_boy_br ;
+Who1 = zeb,
+Who2 = john_boy_jr ;
+Who1 = john_boy_sr,
+Who2 = john_boy_br ;
+Who1 = zeb,
+Who2 = john_boy_br ;
+false.
+```
+
+上述示例是一种直接的传递关系,即首尾相连，我们得出的结论是关系的增加也就意味着我们的规则也要做出相应的改变，不然推论就是不完全的。
+
+其实还有另一种传递关系，即部分首尾不相连，关系如下
+
+```
+father(zeb, john_boy_sr).
+father(john_boy_sr, john_boy_jr).
+father(zeb, john_boy_br).
+father(john_boy_br, john_boy_sr).
+```
+
+相应的代码如下
 
 ```
 father(zeb, john_boy_sr).
@@ -137,9 +192,9 @@ Who1 = john_boy_br,
 Who2 = john_boy_jr.
 ```
 
-推理结果没毛病。
+我们的推理结果没毛病。因为我们我们的规则已经囊括了所有的可能性。如果我们越增加关系的复杂程度，那么我们现在的程序就不是健壮的，就无法推理出所有的结论。
 
-可见，我们现在的程序是健壮的。我们的程序是通过取两个规则的并集完成推理的。实际上，递归也是一个很好的解决办法。我们再回顾一下我们的代码，如下
+我们必须找到一个合适的办法才行，保证我们不管怎样增加关系，我们的规则约束同样适用。实际上，递归是很好的解决办法。我们再回顾一下我们的代码，如下
 
 ```
 father(zeb, john_boy_sr).
