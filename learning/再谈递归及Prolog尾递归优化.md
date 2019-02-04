@@ -7,8 +7,8 @@ Prolog求斐波那契数列的第N项，显得格外优雅，你只需要定义�
 斐波那契数列存在两项基本关系，即第一项和第二项的值为1，描述如下
 
 ```
-fibonacci(1,1).
-fibonacci(2,1).
+fibonacci(1, 1).
+fibonacci(2, 1).
 ```
 
 含义为第1项的斐波那契数列值为1；第二项的斐波那契数列值为1
@@ -19,7 +19,7 @@ fibonacci(2,1).
 
 ```
 fibonacci(No, Value) :- 
-    No > 2, No1 is No - 1, No2 is No - 2, fibonacci(No1, Value1),fibonacci(No2,Value2), Value is Value1 + Value2.
+    No > 2, No1 is No - 1, No2 is No - 2, fibonacci(No1, Value1), fibonacci(No2, Value2), Value is Value1 + Value2.
 ```
 
 含义为当项数No大于2(即从第三项开始)时，第N - 1项的项数为No - 1(用No1表示),第N - 2项的项数为No - 2(用No2表示),第No1项的斐波那契值为fibonacci(No1, Value1),第No2项的斐波那契值为fibonacci(No2, Value2),这两个表达式会返回Value1与Value2的值，那么最终的结果就是Value = Value1 + Value2.
