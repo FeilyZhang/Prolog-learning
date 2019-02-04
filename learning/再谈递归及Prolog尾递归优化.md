@@ -76,7 +76,7 @@ false.
 ```
 int factorial(int n) {
     if (n == 1) return 1;
-	return n * factorial(n - 1);
+    return n * factorial(n - 1);
 }
 ```
 
@@ -98,18 +98,22 @@ n = 5时，得到5 * factorial(4)
 ```
 int factorial(int n, int total) {
     if (n == 1) return total;
-	return factorial(n - 1, n * total);
+    return factorial(n - 1, n * total);
 }
 ```
 
 ```
 那么尾递归的调用过程如下,total初值为1，因为是计算乘法(阶乘)，初始值不能为0
+
 调用factorial(5, 1)，得到factorial(4, 5 * 1)
 第一步的计算结果就是factorial(4, 5 * 1)，没有任何依赖关系
+
 然后计算factorial(4, 5 * 1)，得到factorial(3, 4 * 5 * 1)
 第二步的计算结果就是factorial(3, 4 * 5 * 1)
+
 然后计算factorial(3, 4 * 5 * 1)，得到factorial(2, 3 * 4 * 5 * 1)
 第三步的计算结果是factorial(2, 3 * 4 * 5 * 1)，得到factorial(1, 2 * 3 * 4 * 5 * 1)
+
 然后计算factorial(1, 2 * 3 * 4 * 5 * 1)，得到最终结果就是2 * 3 * 4 * 5 * 1 = 120
 ```
 
@@ -120,8 +124,8 @@ int factorial(int n, int total) {
 ```
 int fibonacci(int n) {
     if (n == 0) return 0;
-	if (n == 1 || n == 2) return 1;
-	return fibonacci(n - 1) + fibonacci(n - 2);
+    if (n == 1 || n == 2) return 1;
+    return fibonacci(n - 1) + fibonacci(n - 2);
 }
 ```
 
@@ -130,7 +134,7 @@ int fibonacci(int n) {
 ```
 int fibonacci(int n, int ret1, int ret2) {
     if (n == 1) return ret1;
-	return fibonacci(n - 1, ret2, ret1 + ret2);
+    return fibonacci(n - 1, ret2, ret1 + ret2);
 }
 ```
 
