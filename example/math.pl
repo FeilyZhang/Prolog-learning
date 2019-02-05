@@ -10,3 +10,5 @@ multiply(1, []).
 multiply(Result,[Head|Tail]) :-
     multiply(Total, Tail), Result is Total * Head.
 
+average(Average,List) :-
+    sum(Sum,List), count(Count,List), Average is Sum / Count.
