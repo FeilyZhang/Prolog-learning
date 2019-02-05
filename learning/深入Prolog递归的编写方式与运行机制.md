@@ -32,19 +32,19 @@ count(Count,[Head|Tail]) :-
 
 有点绕口吧？同样看张表格，再回想一下尾递归的本质就明白了，我们以Count(Count, [1, 2, 3, 4, 5])为例
 
-|code|Count|TailCount|Head|Tail|
-|------|------|------|------|------|
-|count(TailCount,Tail)|——|0|1|[2, 3, 4, 5]|
-|Count is TailCount + 1|1(0 + 1)|——|——|——|
-|count(TailCount,Tail)|1(0 + 1)|1(0 + 1)|2|[3, 4, 5]|
-|Count is TailCount + 1|2(0 + 1 + 1)|——|——|——|
-|count(TailCount,Tail)|2(0 + 1 + 1)|2(0 + 1 + 1)|3|[4, 5]|
-|Count is TailCount + 1|3(0 + 1 + 1 + 1)|——|——|——|
-|count(TailCount,Tail)|3(0 + 1 + 1 + 1)|3(0 + 1 + 1 + 1)|4|[5]|
-|Count is TailCount + 1|4(0 + 1 + 1 + 1 + 1)|——|——|——|
-|count(TailCount,Tail)|4(0 + 1 + 1 + 1 + 1)|4(0 + 1 + 1 + 1 + 1)|5|[]|
-|Count is TailCount + 1|5(0 + 1 + 1 + 1 + 1 + 1)|——|——|——|
-|count(TailCount,Tail)|5(0 + 1 + 1 + 1 + 1 + 1 + 0)|5(0 + 1 + 1 + 1 + 1 + 1)|——|[]|
+|step|code|Count|TailCount|Head|Tail|
+|------|------|------|------|------|------|
+|1|count(TailCount,Tail)|——|0|1|[2, 3, 4, 5]|
+|1|Count is TailCount + 1|1(0 + 1)|——|——|——|
+|2|count(TailCount,Tail)|1(0 + 1)|1(0 + 1)|2|[3, 4, 5]|
+|2|Count is TailCount + 1|2(0 + 1 + 1)|——|——|——|
+|3|count(TailCount,Tail)|2(0 + 1 + 1)|2(0 + 1 + 1)|3|[4, 5]|
+|3|Count is TailCount + 1|3(0 + 1 + 1 + 1)|——|——|——|
+|4|count(TailCount,Tail)|3(0 + 1 + 1 + 1)|3(0 + 1 + 1 + 1)|4|[5]|
+|4|Count is TailCount + 1|4(0 + 1 + 1 + 1 + 1)|——|——|——|
+|5|count(TailCount,Tail)|4(0 + 1 + 1 + 1 + 1)|4(0 + 1 + 1 + 1 + 1)|5|[]|
+|5|Count is TailCount + 1|5(0 + 1 + 1 + 1 + 1 + 1)|——|——|——|
+|break|count(TailCount,Tail)|5(0 + 1 + 1 + 1 + 1 + 1 + 0)|5(0 + 1 + 1 + 1 + 1 + 1)|——|[]|
 
 可见，我们仍然是从头元素开始，顺序计算的，那么什么时候判断退出呢？即当列表为空时，就会调用count(0,[])，然后就会退出了，可见count(0,[])不仅是初始化逻辑也是判断逻辑。而count(TailCount,Tail)总是先调用count(0,[])完成初始化操作，然后每次执行到这里时为下一次递归调用准备Tail和TailCount。
 
