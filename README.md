@@ -11,3 +11,4 @@
 4. [由祖先关系引入Prolog递归](https://github.com/FeilyZhang/Prolog-Learning/blob/master/learning/%E7%94%B1%E7%A5%96%E5%85%88%E5%85%B3%E7%B3%BB%E5%BC%95%E5%85%A5Prolog%E9%80%92%E5%BD%92.md)
 5. [再谈递归及Prolog尾递归优化](https://github.com/FeilyZhang/Prolog-Learning/blob/master/learning/%E5%86%8D%E8%B0%88%E9%80%92%E5%BD%92%E5%8F%8AProlog%E5%B0%BE%E9%80%92%E5%BD%92%E4%BC%98%E5%8C%96.md)
 6. [深入Prolog递归的编写方式与运行机制](https://github.com/FeilyZhang/Prolog-Learning/blob/master/learning/%E6%B7%B1%E5%85%A5Prolog%E9%80%92%E5%BD%92%E7%9A%84%E7%BC%96%E5%86%99%E6%96%B9%E5%BC%8F%E4%B8%8E%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6.md)
+7. [递归应用：列表元素个数、求和、求积](https://github.com/FeilyZhang/Prolog-Learning/blob/master/learning/%E9%80%92%E5%BD%92%E5%BA%94%E7%94%A8%EF%BC%9A%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0%E4%B8%AA%E6%95%B0%E3%80%81%E6%B1%82%E5%92%8C%E3%80%81%E6%B1%82%E7%A7%AF.md)
