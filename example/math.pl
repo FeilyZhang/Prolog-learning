@@ -1,29 +1,12 @@
-# 递归应用：列表元素个数、求和、求积
-
-### 列表元素个数
-程序如下
-
-```
 count(0,[]).
-
 count(Count,[Head|Tail]) :-
     count(TailCount, Tail),Count is TailCount + 1.
-```
 
-### 列表元素求和
-程序如下
-
-```
 sum(0, []).
 sum(Sum,[Head|Tail]) :-
     sum(Total, Tail),Sum is Total + Head.
-```
 
-### 列表元素求积
-程序如下
-
-```
 multiply(1, []).
 multiply(Result,[Head|Tail]) :-
     multiply(Total, Tail), Result is Total * Head.
-```
+
