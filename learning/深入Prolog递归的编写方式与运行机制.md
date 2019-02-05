@@ -63,6 +63,6 @@ count(Count,[Head|Tail]) :-
 
 尾递归就像是普遍的迭代操作，其每次“迭代”参数间的关系如下图
 
-![Prolog尾递归参数关系图](http://feily/tech/image/20190205124257.png)
+![Prolog尾递归参数关系图](https://feily.tech/image/20190205124257.png)
 
 理解了这些张图，以及表格，自然对Prolog尾递归的编写方式更进一步。
